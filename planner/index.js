@@ -21,3 +21,4 @@ WebAssembly.instantiateStreaming(fetch("planner.wasm"), go.importObject).then(
 function jsAdd(x,y){
   return x-y;
 }
+
