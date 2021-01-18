@@ -9,23 +9,50 @@
 
 <body>
   <center>
-    <h1>Hello</h1>
+    <h1>Cyprus Tax and Finance Calculator </h1>
   </center>
 
-<div id="incoming">
-  <input type="number" id="x" name="x" />
+  <div class="income">
 
-</div>
-<div id="incoming">
-  <input type="number" id="x" name="x" />
+    <h1> Incoming </h1>
+  
+    <label for="salary"> Gross Monthly Salary </label>
+    <input type="number" name="salary" min="1" max="9"> 
+  
+    <label for="bonus"> Bonus </label>
+    <input type="number" name="Bonus" min="1" max="9"> 
+  
+    <label for="pv"> Provident Fund </label>
+    <input type="number" name="pv" min="1" max="9"> 
+  
+    <label for="13th"> 13th Salary (Optional) </label>
+    <input type="number" name="13th" min="1" max="9"> 
+  
+  <!-- Create option to add customisable inputs (e.g Income from renting out owned property) --> 
 
-</div>
-
-</div>
-<div id="incoming">
-  <input type="number" id="x" name="x" />
-
-</div>
+  </div>
+  
+  <br>
+  
+  <div class="outgoing">
+  
+    <h1> Outgoing </h1>
+  
+     <label for="housing"> Housing (loan/rent) </label>
+    <input type="number" name="housing" min="1" max="9"> 
+  
+    <label for="utilities"> Utilies (Water, Electricity, Gas) </label>
+    <input type="number" name="utilities" min="1" max="9"> 
+  
+    <label for="entertainment"> Entertainment (Streaming Servies, TV Subscription)  </label>
+    <input type="number" name="entertainment" min="1" max="9"> 
+  
+    <label for="essentials"> Essentials (Mobile Phone Contract, Car Insurance) </label>
+    <input type="number" name="essentials" min="1" max="9"> 
+  
+    <!-- Create option to add customisable inputs (e.g monthly spending on getting hair cut, going out for dinner.) --> 
+  
+  </div>
 
   <main id="wasm"></main>
 </body>
