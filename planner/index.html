@@ -2,56 +2,69 @@
 <html>
 
 <head>
+  <title>&euro; Tax Calculator</title>
   <meta charset="utf-8">
   <script src="wasm_exec.js"></script>
   <script src="index.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
-<body>
-  <center>
-    <h1>Cyprus Tax and Finance Calculator </h1>
-  </center>
-
+<body style="font-family: 'Playfair Display', serif;">
+  <h1 style="position: fixed; left: 50%; transform: translate(-50%, -50%);">Cyprus Tax and Finance Calculator &euro;
+  </h1>
   <div class="income">
-
-    <h1> Incoming </h1>
-  
-    <label for="salary"> Gross Monthly Salary </label>
-    <input type="number" name="salary" min="1" max="9"> 
-  
-    <label for="bonus"> Bonus </label>
-    <input type="number" name="Bonus" min="1" max="9"> 
-  
-    <label for="pv"> Provident Fund </label>
-    <input type="number" name="pv" min="1" max="9"> 
-  
-    <label for="13th"> 13th Salary (Optional) </label>
-    <input type="number" name="13th" min="1" max="9"> 
-  
-  <!-- Create option to add customisable inputs (e.g Income from renting out owned property) --> 
-
+    <h1>Income</h1>
+    <table>
+      <tr>
+        <td><label for="salary"> Gross Monthly Salary </label></td>
+        <td><input type="number" name="salary" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><label for="bonus"> Bonus </label></td>
+        <td><input type="number" name="Bonus" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><label for="13th"> 13<sup>th</sup> Salary</label></td>
+        <td><input type="checkbox" name="13th"></td>
+      </tr>
+      <tr>
+        <td rowspan="3">Deductions</td>
+        <td><label for="pv"> Provident Fund </label></td>
+        <td><input type="number" name="pv" min="1" max="9"> %</td>
+      </tr>
+      <tr>
+        <td><label for="si">Social Insurance</label></td>
+        <td><input type="number" name="si" value="8.3" min="1" max="9" disabled> %</td>
+      </tr>
+      <tr>
+        <td><label for="ghs">General Healthcare System</label></td>
+        <td><input type="number" name="ghs" value="2.65" min="1" max="9" disabled> %</td>
+      </tr>
+    </table>
   </div>
-  
   <br>
-  
   <div class="outgoing">
-  
-    <h1> Outgoing </h1>
-  
-     <label for="housing"> Housing (loan/rent) </label>
-    <input type="number" name="housing" min="1" max="9"> 
-  
-    <label for="utilities"> Utilies (Water, Electricity, Gas) </label>
-    <input type="number" name="utilities" min="1" max="9"> 
-  
-    <label for="entertainment"> Entertainment (Streaming Servies, TV Subscription)  </label>
-    <input type="number" name="entertainment" min="1" max="9"> 
-  
-    <label for="essentials"> Essentials (Mobile Phone Contract, Car Insurance) </label>
-    <input type="number" name="essentials" min="1" max="9"> 
-  
-    <!-- Create option to add customisable inputs (e.g monthly spending on getting hair cut, going out for dinner.) --> 
-  
+    <h1>Expenses</h1>
+    <table>
+      <tr><label for="housing"> Housing (loan/rent) </label>
+        <input type="number" name="housing" min="1" max="9">
+      </tr>
+
+      <tr><label for="utilities"> Utilies (Water, Electricity, Gas) </label>
+        <input type="number" name="utilities" min="1" max="9">
+      </tr>
+
+      <tr><label for="entertainment"> Entertainment (Streaming Servies, TV Subscription) </label>
+        <input type="number" name="entertainment" min="1" max="9">
+      </tr>
+
+      <tr><label for="essentials"> Essentials (Mobile Phone Contract, Car Insurance) </label>
+        <input type="number" name="essentials" min="1" max="9">
+      </tr>
+    </table>
+
+    <!-- Create option to add customisable inputs (e.g monthly spending on getting hair cut, going out for dinner.) -->
+
   </div>
 
   <main id="wasm"></main>
