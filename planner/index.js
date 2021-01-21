@@ -18,7 +18,28 @@ WebAssembly.instantiateStreaming(fetch("planner.wasm"), go.importObject).then(
   }
 );
 
-function jsAdd(x,y){
-  return x-y;
+function jsAdd(x, y) {
+  return x - y;
 }
 
+const initListeners = () => {
+  console.log("initialising listeners");
+  var deductions = document.getElementsByClassName("deduction");
+  for (var i = 0; i < deductions.length; i++) {
+    deductions.item(i).addEventListener("change", getTotalDeductions)
+  }
+}
+
+
+
+const getTotalDeductions = (event) => {
+  var d = document.getElementsByClassName("deduction");
+  let totalDeductions = 0;
+  for (var j = 0; j < d.length; j++) {
+    totalDeductions += d.item(j).nodeValue;
+  }
+  document.getElementsByName("tdp").item(0).innerText = totalDeductions
+}
+document.addEventListener("DOMContentLoaded", () => {
+  console.log('Page is loaded');
+});
