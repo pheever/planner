@@ -1,0 +1,9 @@
+<h1>income works!</h1>
+
+<input [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" />
+<br />
+<ul class="si-contribution">
+  <li *ngFor="let state of socialInsurance" (click)="onSelect(si)">
+    <span title={{state.contribution}}%>{{state.status}}</span>
+  </li>
+</ul>
