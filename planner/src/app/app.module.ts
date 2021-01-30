@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IncomeComponent } from './income/income.component';
+import { DeductionsComponent } from './deductions/deductions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IncomeComponent
+    IncomeComponent,
+    DeductionsComponent
   ],
   imports: [
     BrowserModule,

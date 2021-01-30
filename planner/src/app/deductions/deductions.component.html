@@ -1,0 +1,15 @@
+<h1>Deductions</h1>
+
+<span>Anual Deductions: </span>{{anualDeductions()}}
+<br>
+<span>Monthly deductions: </span>{{monthlyDeductions()}}
+<br>
+<span>Social Insurance: </span>{{selectedStatus.si}} %
+<br>
+<span>General Healthcare System: </span>{{selectedStatus.ghs}} %
+
+<ul class="deductions">
+  <li *ngFor="let item of employmentTypes" [class.selected]="item === selectedStatus" (click)="onSelect(item)">
+    <span class="badge">{{item.status}}</span>
+  </li>
+</ul>

@@ -1,1 +1,4 @@
-ul {display: inline-block; list-style: none;padding:0;}
+li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}

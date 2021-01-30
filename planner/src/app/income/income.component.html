@@ -1,9 +1,10 @@
-<h1>income works!</h1>
+<h1>Gross Income</h1>
 
-<input [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" />
-<br />
-<ul class="si-contribution">
-  <li *ngFor="let state of socialInsurance" (click)="onSelect(si)">
-    <span title={{state.contribution}}%>{{state.status}}</span>
-  </li>
-</ul>
+<span>Gross Anual Income: </span>{{grossIncome()}}
+<br>
+
+<label>Monthly salary: <input [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" /></label><br>
+<label>Bonus:<input [(ngModel)]="bonus" type="number" placeholder="bonus" /></label><br>
+<label>Thirteen salary: <input type="checkbox" [(ngModel)]="thirteen" /></label>
+
+<app-deductions [anualIncome]="grossIncome()" [monthlyIncome]="monthlyIncome" ></app-deductions>
