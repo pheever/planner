@@ -1,10 +1,22 @@
 <h1>Gross Income</h1>
 
-<span>Gross Anual Income: </span>{{grossIncome()}}
-<br>
+<table>
+  <tr>
+    <td><label for="monthlyIncome">Monthly salary</label></td>
+    <td><input name="monthlyIncome" [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" /></td>
+  </tr>
+  <tr>
+    <td><label for="bonus">Bonus</label></td>
+    <td><input name="bonus" [(ngModel)]="bonus" type="number" placeholder="bonus" /></td>
+  </tr>
+  <tr>
+    <td><label for="thirteen">Thirteen salary</label></td>
+    <td><input name="thirteen" type="checkbox" [(ngModel)]="thirteen" /></td>
+  </tr>
+  <tr>
+    <td><label>Gross Annual Income</label></td>
+    <td><label>{{grossIncome()}} &euro;</label></td>
+  </tr>
+</table>
 
-<label>Monthly salary: <input [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" /></label><br>
-<label>Bonus:<input [(ngModel)]="bonus" type="number" placeholder="bonus" /></label><br>
-<label>Thirteen salary: <input type="checkbox" [(ngModel)]="thirteen" /></label>
-
-<app-deductions [anualIncome]="grossIncome()" [monthlyIncome]="monthlyIncome" ></app-deductions>
+<app-deductions [annualIncome]="grossIncome()" [monthlyIncome]="monthlyIncome"></app-deductions>

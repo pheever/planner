@@ -1,15 +1,50 @@
 <h1>Deductions</h1>
 
-<span>Anual Deductions: </span>{{anualDeductions()}}
-<br>
-<span>Monthly deductions: </span>{{monthlyDeductions()}}
-<br>
-<span>Social Insurance: </span>{{selectedStatus.si}} %
-<br>
-<span>General Healthcare System: </span>{{selectedStatus.ghs}} %
+<table>
+  <tr>
+    <td>Employment Status</td>
+    <td><label class="deductions" *ngFor="let item of employmentTypes" [class.selected]="item === selectedStatus"
+        (click)="onSelect(item)">
+        <span class="badge">{{item.status | titlecase}}</span>
+      </label></td>
+  </tr>
+  <tr>
+    <td>Provident fund</td>
+    <td><input type="number" [(ngModel)]="providentFund" /></td>
+  </tr>
+</table>
 
-<ul class="deductions">
-  <li *ngFor="let item of employmentTypes" [class.selected]="item === selectedStatus" (click)="onSelect(item)">
-    <span class="badge">{{item.status}}</span>
-  </li>
-</ul>
+
+
+<table>
+  <tr>
+    <th></th>
+    <th>Monthly</th>
+    <th>Annual</th>
+  </tr>
+  <tr>
+    <th title="{{selectedStatus.si}} &#37;">Social Insurance</th>
+    <td>{{monthlySI().toFixed(2)}} &euro;</td>
+    <td>{{annualSI().toFixed(2)}} &euro;</td>
+  </tr>
+  <tr>
+    <th title="{{selectedStatus.ghs}} &#37;">GHS</th>
+    <td>{{monthlyGHS().toFixed(2)}} &euro;</td>
+    <td>{{annualGHS().toFixed(2)}} &euro;</td>
+  </tr>
+  <tr>
+    <th title="{{providentFund}} &#37;">Provident fund</th>
+    <td>{{monthlyPF().toFixed(2)}} &euro;</td>
+    <td>{{annualPF().toFixed(2)}} &euro;</td>
+  </tr>
+  <tr class="total">
+    <th>Total Deductions</th>
+    <td>{{monthlyDeductions().toFixed(2)}} &euro;</td>
+    <td>{{annualDeductions().toFixed(2)}} &euro;</td>
+  </tr>
+  <tr class="total">
+    <th>Net Income</th>
+    <td>{{(monthlyIncome - monthlyDeductions()).toFixed(2)}} &euro;</td>
+    <td>{{(annualIncome - annualDeductions()).toFixed(2)}} &euro;</td>
+  </tr>
+</table>
