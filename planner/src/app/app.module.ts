@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IncomeComponent } from './income/income.component';
 import { DeductionsComponent } from './deductions/deductions.component';
+import { TaxComponent } from './tax/tax.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IncomeComponent,
-    DeductionsComponent
+    DeductionsComponent,
+    TaxComponent
   ],
   imports: [
     BrowserModule,

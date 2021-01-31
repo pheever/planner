@@ -10,7 +10,7 @@
   </tr>
   <tr>
     <td>Provident fund</td>
-    <td><input type="number" [(ngModel)]="providentFund" /></td>
+    <td><input type="number" step="0.01" [(ngModel)]="providentFund" /></td>
   </tr>
 </table>
 
@@ -48,3 +48,5 @@
     <td>{{(annualIncome - annualDeductions()).toFixed(2)}} &euro;</td>
   </tr>
 </table>
+
+<app-tax [annualIncome]="annualIncome" [totalDeductions]="totalDeductions()"></app-tax>

@@ -1,0 +1,18 @@
+<h1>Tax</h1>
+
+<table>
+  <tr>
+    <th>Tax</th>
+    <th>Up to</th>
+    <th>Payable</th>
+  </tr>
+  <tr *ngFor="let item of payableTaxPerBracket()">
+    <td>{{item.tax}}&#37;</td>
+    <td>{{item.upto <= getMaxTaxableBracket()?item.upto:'>'+getMaxTaxableBracket()}} &euro;</td>
+    <td>{{item.payable.toFixed(2)}} &euro;</td>
+  </tr>
+  <tr>
+    <th colspan="2">Total Tax</th>
+    <td> {{totalTax().toFixed(2)}} &euro;</td>
+  </tr>
+</table>

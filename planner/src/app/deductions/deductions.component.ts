@@ -19,13 +19,14 @@ export class DeductionsComponent implements OnInit {
 
   tax: number = 0
   constructor() { }
+  totalDeductions = () => this.selectedStatus.si + this.selectedStatus.ghs + this.providentFund;
   numberWithCommas = (x: string) => x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   onSelect = (status: Employment) => this.selectedStatus = status
-  monthlyDeductions = () => (this.monthlyIncome * (this.selectedStatus.si + this.selectedStatus.ghs + this.providentFund) / 100);
+  monthlyDeductions = () => (this.monthlyIncome * this.totalDeductions() / 100);
   monthlySI = () => (this.monthlyIncome * this.selectedStatus.si / 100);
   monthlyGHS = () => (this.monthlyIncome * this.selectedStatus.ghs / 100);
   monthlyPF = () => (this.monthlyIncome * this.providentFund / 100);
-  annualDeductions = () => (this.annualIncome * (this.selectedStatus.si + this.selectedStatus.ghs + this.providentFund) / 100);
+  annualDeductions = () => (this.annualIncome * this.totalDeductions() / 100);
   annualSI = () => (this.annualIncome * this.selectedStatus.si / 100);
   annualGHS = () => (this.annualIncome * this.selectedStatus.ghs / 100);
   annualPF = () => (this.annualIncome * this.providentFund / 100);
