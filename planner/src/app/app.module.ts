@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { IncomeComponent } from './income/income.component';
 import { DeductionsComponent } from './deductions/deductions.component';
 import { TaxComponent } from './tax/tax.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IncomeComponent,
     DeductionsComponent,
-    TaxComponent
+    TaxComponent,
+    ExpensesComponent
   ],
   imports: [
     BrowserModule,

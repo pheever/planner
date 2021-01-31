@@ -52,8 +52,9 @@
   </tr>
   <tr class="total">
     <th colspan="2">Net Income</th>
-    <td>{{(monthlyIncome - monthlyDeductions()-monthlyTax()).toFixed(2)}} &euro;</td>
-    <td>{{(annualIncome - annualDeductions()-annualTax()).toFixed(2)}} &euro;</td>
+    <td>{{netMonthlyIncome().toFixed(2)}} &euro;</td>
+    <td>{{netAnnualIncome().toFixed(2)}} &euro;</td>
   </tr>
 </table>
 <app-tax [annualIncome]="annualIncome" [totalDeductions]="totalDeductions()" (tax)="getTax($event)"></app-tax>
+<app-expenses [netAnnualIncome]="netAnnualIncome()" [netMonthlyIncome]="netMonthlyIncome()"></app-expenses>

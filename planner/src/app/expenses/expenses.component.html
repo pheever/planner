@@ -1,0 +1,57 @@
+<h1>Expenses</h1>
+<div class="row">
+  <div class="column">
+    <table class="monthly">
+      <tr>
+        <th colspan="3">Monthly</th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>%</th>
+        <td><label (click)="createExpense(true)" class="add">+</label></td>
+      </tr>
+      <tr *ngFor="let expense of monthlyExpenses; let i=index;">
+        <td><input [(ngModel)]="expense.name" size="15" /></td>
+        <td><input [(ngModel)]="expense.amount" type="number" size="4" /></td>
+        <td>{{expensePerc(true,expense.amount).toFixed(2)}}&#37;</td>
+        <td><label class="remove" (click)="removeExpense(true, i)">X</label></td>
+      </tr>
+      <tr class="total">
+        <th>Total</th>
+        <td>{{totalExpenses(true).toFixed(2)}}&euro;</td>
+        <td>{{totalExpensesPerc(true).toFixed(2)}}&#37;</td>
+      </tr>
+    </table>
+  </div>
+  <div class="column">
+    <table class="annual">
+      <tr>
+        <th colspan="3">Annual</th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>%</th>
+        <td><label (click)="createExpense(false)" class="add">+</label>
+        </td>
+      </tr>
+      <tr *ngFor="let expense of monthlyExpenses; let i=index;">
+        <td>Annual {{expense.name}}</td>
+        <td>{{expense.amount*12}}</td>
+        <td>{{expensePerc(true,expense.amount*12).toFixed(2)}}&#37;</td>
+      </tr>
+      <tr *ngFor="let expense of annualExpenses; let i=index;">
+        <td><input [(ngModel)]="expense.name" size="15" /></td>
+        <td><input [(ngModel)]="expense.amount" type="number" size="4" /></td>
+        <td>{{expensePerc(false,expense.amount).toFixed(2)}}&#37;</td>
+        <td><label class="remove" (click)="removeExpense(false, i)">X</label></td>
+      </tr>
+      <tr class="total">
+        <th>Total</th>
+        <td>{{totalExpenses(false).toFixed(2)}}&euro;</td>
+        <td>{{totalExpensesPerc(false).toFixed(2)}}&#37;</td>
+      </tr>
+    </table>
+  </div>
+</div>

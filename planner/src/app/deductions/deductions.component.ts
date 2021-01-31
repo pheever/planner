@@ -36,6 +36,10 @@ export class DeductionsComponent implements OnInit {
   annualPF = () => (this.annualIncome * this.providentFund / 100);
   annualTax = () => this.tax;
 
+  netMonthlyIncome = () => this.monthlyIncome - this.monthlyDeductions() - this.monthlyTax();
+  netAnnualIncome = () => this.annualIncome - this.annualDeductions() - this.annualTax();
+
+
   ngOnInit(): void {
   }
 
