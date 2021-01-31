@@ -1,0 +1,8 @@
+table tr * {
+  text-align: right;
+}
+
+table tr.total * {
+  font-weight: bold;
+  border-top: solid;
+}

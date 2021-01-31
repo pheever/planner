@@ -2,51 +2,58 @@
 
 <table>
   <tr>
-    <td>Employment Status</td>
-    <td><label class="deductions" *ngFor="let item of employmentTypes" [class.selected]="item === selectedStatus"
+    <th>Employment Status</th>
+    <td><label *ngFor="let item of employmentTypes" [class.selected]="item === selectedStatus" class="deductions"
         (click)="onSelect(item)">
         <span class="badge">{{item.status | titlecase}}</span>
       </label></td>
   </tr>
   <tr>
-    <td>Provident fund</td>
+    <th>Provident fund</th>
     <td><input type="number" step="0.01" [(ngModel)]="providentFund" /></td>
   </tr>
 </table>
-
-
-
 <table>
   <tr>
     <th></th>
+    <th>&#37;</th>
     <th>Monthly</th>
     <th>Annual</th>
   </tr>
   <tr>
-    <th title="{{selectedStatus.si}} &#37;">Social Insurance</th>
+    <th>Social Insurance</th>
+    <th>{{selectedStatus.si.toFixed(2)}}&#37;</th>
     <td>{{monthlySI().toFixed(2)}} &euro;</td>
     <td>{{annualSI().toFixed(2)}} &euro;</td>
   </tr>
   <tr>
-    <th title="{{selectedStatus.ghs}} &#37;">GHS</th>
+    <th>GHS</th>
+    <th>{{selectedStatus.ghs.toFixed(2)}}&#37;</th>
     <td>{{monthlyGHS().toFixed(2)}} &euro;</td>
     <td>{{annualGHS().toFixed(2)}} &euro;</td>
   </tr>
   <tr>
-    <th title="{{providentFund}} &#37;">Provident fund</th>
+    <th>Provident fund</th>
+    <th>{{providentFund.toFixed(2)}}&#37;</th>
     <td>{{monthlyPF().toFixed(2)}} &euro;</td>
     <td>{{annualPF().toFixed(2)}} &euro;</td>
   </tr>
   <tr class="total">
     <th>Total Deductions</th>
+    <th>{{totalDeductions().toFixed(2)}}&#37;</th>
     <td>{{monthlyDeductions().toFixed(2)}} &euro;</td>
     <td>{{annualDeductions().toFixed(2)}} &euro;</td>
   </tr>
   <tr class="total">
-    <th>Net Income</th>
-    <td>{{(monthlyIncome - monthlyDeductions()).toFixed(2)}} &euro;</td>
-    <td>{{(annualIncome - annualDeductions()).toFixed(2)}} &euro;</td>
+    <th>Tax Deductions</th>
+    <th>{{monthlyTaxP().toFixed(2)}}&#37;</th>
+    <td>{{monthlyTax().toFixed(2)}} &euro;</td>
+    <td>{{annualTax().toFixed(2)}} &euro;</td>
+  </tr>
+  <tr class="total">
+    <th colspan="2">Net Income</th>
+    <td>{{(monthlyIncome - monthlyDeductions()-monthlyTax()).toFixed(2)}} &euro;</td>
+    <td>{{(annualIncome - annualDeductions()-annualTax()).toFixed(2)}} &euro;</td>
   </tr>
 </table>
-
-<app-tax [annualIncome]="annualIncome" [totalDeductions]="totalDeductions()"></app-tax>
+<app-tax [annualIncome]="annualIncome" [totalDeductions]="totalDeductions()" (tax)="getTax($event)"></app-tax>

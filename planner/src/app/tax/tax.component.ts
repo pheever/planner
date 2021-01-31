@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { TaxBracket, Taxes } from '../tax-brackets'
 
 @Component({
@@ -6,10 +6,11 @@ import { TaxBracket, Taxes } from '../tax-brackets'
   templateUrl: './tax.component.html',
   styleUrls: ['./tax.component.css']
 })
-export class TaxComponent implements OnInit {
+export class TaxComponent implements OnInit, OnChanges {
   taxes: TaxBracket[] = Taxes;
   @Input() annualIncome: number = 0
   @Input() totalDeductions: number = 0
+  @Output() tax = new EventEmitter<number>();
 
   payableTaxPerBracket = (): TaxBracket[] => {
     let taxable = this.annualIncome * (1 - Math.min(this.totalDeductions, 20) / 100);
@@ -21,10 +22,15 @@ export class TaxComponent implements OnInit {
     });
   }
 
-  totalTax = () => this.payableTaxPerBracket().reduce((a, v) => a + v.payable, 0)
+  taxBracketsFiletered = () => this.payableTaxPerBracket().filter(v => v.payable > 0)
+
+  totalTax = () => this.payableTaxPerBracket().reduce((a, v) => a + v.payable, 0);
 
   getMaxTaxableBracket = () => this.payableTaxPerBracket().reduce((a, v) => v.upto !== Number.MAX_SAFE_INTEGER && v.upto > a ? v.upto : a, 0)
 
   constructor() { }
   ngOnInit(): void { }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.tax.emit(this.totalTax())
+  }
 }

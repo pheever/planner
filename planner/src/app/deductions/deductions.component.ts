@@ -18,6 +18,8 @@ export class DeductionsComponent implements OnInit {
   selectedStatus: Employment = Employments.filter(v => v.status == "employee")[0]
 
   tax: number = 0
+  getTax(tax: number) { this.tax = tax }
+
   constructor() { }
   totalDeductions = () => this.selectedStatus.si + this.selectedStatus.ghs + this.providentFund;
   numberWithCommas = (x: string) => x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
@@ -26,10 +28,13 @@ export class DeductionsComponent implements OnInit {
   monthlySI = () => (this.monthlyIncome * this.selectedStatus.si / 100);
   monthlyGHS = () => (this.monthlyIncome * this.selectedStatus.ghs / 100);
   monthlyPF = () => (this.monthlyIncome * this.providentFund / 100);
+  monthlyTax = () => this.tax / 12;
+  monthlyTaxP = () => (this.tax / 12) / this.monthlyIncome * 100;
   annualDeductions = () => (this.annualIncome * this.totalDeductions() / 100);
   annualSI = () => (this.annualIncome * this.selectedStatus.si / 100);
   annualGHS = () => (this.annualIncome * this.selectedStatus.ghs / 100);
   annualPF = () => (this.annualIncome * this.providentFund / 100);
+  annualTax = () => this.tax;
 
   ngOnInit(): void {
   }

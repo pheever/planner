@@ -2,20 +2,20 @@
 
 <table>
   <tr>
-    <td><label for="monthlyIncome">Monthly salary</label></td>
+    <th>Monthly salary</th>
     <td><input name="monthlyIncome" [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" /></td>
   </tr>
   <tr>
-    <td><label for="bonus">Bonus</label></td>
+    <th>Bonus</th>
     <td><input name="bonus" [(ngModel)]="bonus" type="number" placeholder="bonus" /></td>
   </tr>
   <tr>
-    <td><label for="thirteen">Thirteen salary</label></td>
+    <th>Thirteen salary</th>
     <td><input name="thirteen" type="checkbox" [(ngModel)]="thirteen" /></td>
   </tr>
-  <tr>
-    <td><label>Gross Annual Income</label></td>
-    <td><label>{{grossIncome()}} &euro;</label></td>
+  <tr class="total">
+    <th>Gross Annual Income</th>
+    <td>{{grossIncome()}} &euro;</td>
   </tr>
 </table>
 

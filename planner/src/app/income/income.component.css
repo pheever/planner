@@ -2,3 +2,12 @@ li.selected {
   background-color: #CFD8DC;
   color: white;
 }
+
+table tr * {
+  text-align: right;
+}
+
+table tr.total * {
+  font-weight: bold;
+  border-top: solid;
+}
