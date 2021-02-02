@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Employments, Employment } from '../contributions'
+import '../../assets/string.extensions'
 
 @Component({
   selector: 'app-deductions',
@@ -22,7 +23,6 @@ export class DeductionsComponent implements OnInit {
 
   constructor() { }
   totalDeductions = () => this.selectedStatus.si + this.selectedStatus.ghs + this.providentFund;
-  numberWithCommas = (x: string) => x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   onSelect = (status: Employment) => this.selectedStatus = status
   monthlyDeductions = () => (this.monthlyIncome * this.totalDeductions() / 100);
   monthlySI = () => (this.monthlyIncome * this.selectedStatus.si / 100);

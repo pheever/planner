@@ -22,6 +22,7 @@
   color: white;
 }
 
+
 table tr * {
   text-align: right;
 }
@@ -29,4 +30,10 @@ table tr * {
 table tr.total * {
   font-weight: bold;
   border-top: solid;
+}
+
+table tr.total:last-child{
+  background-color: purple;
+  color: white;
+  border-radius: 3px;
 }

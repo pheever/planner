@@ -51,3 +51,8 @@ label.add:hover{
   display: flex;
 }
 
+table tr.total:last-child{
+  background-color: darkgoldenrod;
+  color: white;
+  border-radius: 3px;
+}

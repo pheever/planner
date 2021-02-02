@@ -3,11 +3,11 @@
 <table>
   <tr>
     <th>Monthly salary</th>
-    <td><input name="monthlyIncome" [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" /></td>
+    <td>&euro;<input name="monthlyIncome" [(ngModel)]="monthlyIncome" type="number" placeholder="monthly income" size="6" /></td>
   </tr>
   <tr>
     <th>Bonus</th>
-    <td><input name="bonus" [(ngModel)]="bonus" type="number" placeholder="bonus" /></td>
+    <td>&euro;<input name="bonus" [(ngModel)]="bonus" type="number" placeholder="bonus" size="6" /></td>
   </tr>
   <tr>
     <th>Thirteen salary</th>
@@ -15,7 +15,7 @@
   </tr>
   <tr class="total">
     <th>Gross Annual Income</th>
-    <td>{{grossIncome()}} &euro;</td>
+    <td>&euro;{{grossIncome().toFixed(2).commas()}}</td>
   </tr>
 </table>
 

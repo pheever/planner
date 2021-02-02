@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { TaxBracket, Taxes } from '../tax-brackets'
+import '../../assets/string.extensions'
 
 @Component({
   selector: 'app-tax',

@@ -11,3 +11,10 @@ table tr.total * {
   font-weight: bold;
   border-top: solid;
 }
+
+
+table tr.total:last-child{
+  background-color: green;
+  color: white;
+  border-radius: 3px;
+}

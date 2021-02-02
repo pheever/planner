@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import '../../assets/string.extensions'
 
 @Component({
   selector: 'app-income',

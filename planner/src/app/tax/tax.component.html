@@ -8,10 +8,10 @@
   <tr *ngFor="let item of taxBracketsFiletered()">
     <td>{{item.tax}}&#37;</td>
     <td>{{item.upto <= getMaxTaxableBracket() ? item.upto:'>' + getMaxTaxableBracket()}} &euro;</td>
-    <td>{{item.payable.toFixed(2)}} &euro;</td>
+    <td>{{item.payable.toFixed(2).commas()}} &euro;</td>
   </tr>
   <tr class="total">
     <th colspan="2">Total Tax</th>
-    <td>{{totalTax().toFixed(2)}} &euro;</td>
+    <td>{{totalTax().toFixed(2).commas()}} &euro;</td>
   </tr>
 </table>

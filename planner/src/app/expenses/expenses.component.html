@@ -13,14 +13,19 @@
       </tr>
       <tr *ngFor="let expense of monthlyExpenses; let i=index;">
         <td><input [(ngModel)]="expense.name" size="15" /></td>
-        <td><input [(ngModel)]="expense.amount" type="number" size="4" /></td>
-        <td>{{expensePerc(true,expense.amount).toFixed(2)}}&#37;</td>
+        <td>&euro;<input [(ngModel)]="expense.amount" type="number" size="6" step="0.01" /></td>
+        <td>{{expensePerc(true,expense.amount).toFixed(2).commas()}}&#37;</td>
         <td><label class="remove" (click)="removeExpense(true, i)">X</label></td>
       </tr>
-      <tr class="total">
+      <tr class="total" *ngIf="netMonthlyIncome > 0">
         <th>Total</th>
-        <td>{{totalExpenses(true).toFixed(2)}}&euro;</td>
-        <td>{{totalExpensesPerc(true).toFixed(2)}}&#37;</td>
+        <td>&euro;{{totalExpenses(true).toFixed(2).commas()}}</td>
+        <td>{{totalExpensesPerc(true).toFixed(2).commas()}}&#37;</td>
+      </tr>
+      <tr class="total" *ngIf="netMonthlyIncome > 0">
+        <th>Savings</th>
+        <td>&euro;{{(netMonthlyIncome - totalExpenses(true)).toFixed(2).commas()}}&euro;</td>
+        <td>{{(100 - totalExpensesPerc(true)).toFixed(2).commas()}}&#37;</td>
       </tr>
     </table>
   </div>
@@ -38,19 +43,24 @@
       </tr>
       <tr *ngFor="let expense of monthlyExpenses; let i=index;">
         <td>Annual {{expense.name}}</td>
-        <td>{{expense.amount*12}}</td>
-        <td>{{expensePerc(true,expense.amount*12).toFixed(2)}}&#37;</td>
+        <td>&euro;{{(expense.amount*12).toFixed(2).commas()}}</td>
+        <td>{{expensePerc(false,expense.amount*12).toFixed(2).commas()}}&#37;</td>
       </tr>
       <tr *ngFor="let expense of annualExpenses; let i=index;">
         <td><input [(ngModel)]="expense.name" size="15" /></td>
-        <td><input [(ngModel)]="expense.amount" type="number" size="4" /></td>
-        <td>{{expensePerc(false,expense.amount).toFixed(2)}}&#37;</td>
+        <td>&euro;<input [(ngModel)]="expense.amount" type="number" size="6" step="0.01" /></td>
+        <td>{{expensePerc(false,expense.amount).toFixed(2).commas()}}&#37;</td>
         <td><label class="remove" (click)="removeExpense(false, i)">X</label></td>
       </tr>
-      <tr class="total">
+      <tr class="total" *ngIf="netMonthlyIncome > 0">
         <th>Total</th>
-        <td>{{totalExpenses(false).toFixed(2)}}&euro;</td>
-        <td>{{totalExpensesPerc(false).toFixed(2)}}&#37;</td>
+        <td>&euro;{{totalExpenses(false).toFixed(2).commas()}}</td>
+        <td>{{totalExpensesPerc(false).toFixed(2).commas()}}&#37;</td>
+      </tr>
+      <tr class="total" *ngIf="netAnnualIncome > 0">
+        <th>Savings</th>
+        <td>&euro;{{(netAnnualIncome - totalExpenses(false)).toFixed(2).commas()}}</td>
+        <td>{{(100 - totalExpensesPerc(false)).toFixed(2).commas()}}&#37;</td>
       </tr>
     </table>
   </div>

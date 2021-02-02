@@ -10,7 +10,7 @@
   </tr>
   <tr>
     <th>Provident fund</th>
-    <td><input type="number" step="0.01" [(ngModel)]="providentFund" /></td>
+    <td><input type="number" step="0.01" size="2" [(ngModel)]="providentFund" />&#37;</td>
   </tr>
 </table>
 <table>
@@ -22,38 +22,38 @@
   </tr>
   <tr>
     <th>Social Insurance</th>
-    <th>{{selectedStatus.si.toFixed(2)}}&#37;</th>
-    <td>{{monthlySI().toFixed(2)}} &euro;</td>
-    <td>{{annualSI().toFixed(2)}} &euro;</td>
+    <th>{{selectedStatus.si.toFixed(2).commas()}}&#37;</th>
+    <td>&euro;{{monthlySI().toFixed(2).commas()}}</td>
+    <td>&euro;{{annualSI().toFixed(2).commas()}}</td>
   </tr>
   <tr>
     <th>GHS</th>
-    <th>{{selectedStatus.ghs.toFixed(2)}}&#37;</th>
-    <td>{{monthlyGHS().toFixed(2)}} &euro;</td>
-    <td>{{annualGHS().toFixed(2)}} &euro;</td>
+    <th>{{selectedStatus.ghs.toFixed(2).commas()}}&#37;</th>
+    <td>&euro;{{monthlyGHS().toFixed(2).commas()}}</td>
+    <td>&euro;{{annualGHS().toFixed(2).commas()}}</td>
   </tr>
   <tr>
     <th>Provident fund</th>
-    <th>{{providentFund.toFixed(2)}}&#37;</th>
-    <td>{{monthlyPF().toFixed(2)}} &euro;</td>
-    <td>{{annualPF().toFixed(2)}} &euro;</td>
+    <th>{{providentFund.toFixed(2).commas()}}&#37;</th>
+    <td>&euro;{{monthlyPF().toFixed(2).commas()}}</td>
+    <td>&euro;{{annualPF().toFixed(2).commas()}}</td>
   </tr>
   <tr class="total">
     <th>Total Deductions</th>
-    <th>{{totalDeductions().toFixed(2)}}&#37;</th>
-    <td>{{monthlyDeductions().toFixed(2)}} &euro;</td>
-    <td>{{annualDeductions().toFixed(2)}} &euro;</td>
+    <th>{{totalDeductions().toFixed(2).commas()}}&#37;</th>
+    <td>&euro;{{monthlyDeductions().toFixed(2).commas()}}</td>
+    <td>&euro;{{annualDeductions().toFixed(2).commas()}}</td>
   </tr>
-  <tr class="total">
+  <tr class="total"  *ngIf="tax > 0">
     <th>Tax Deductions</th>
-    <th>{{monthlyTaxP().toFixed(2)}}&#37;</th>
-    <td>{{monthlyTax().toFixed(2)}} &euro;</td>
-    <td>{{annualTax().toFixed(2)}} &euro;</td>
+    <th>{{monthlyTaxP().toFixed(2).commas()}}&#37;</th>
+    <td>&euro;{{monthlyTax().toFixed(2).commas()}}</td>
+    <td>&euro;{{annualTax().toFixed(2).commas()}}</td>
   </tr>
   <tr class="total">
     <th colspan="2">Net Income</th>
-    <td>{{netMonthlyIncome().toFixed(2)}} &euro;</td>
-    <td>{{netAnnualIncome().toFixed(2)}} &euro;</td>
+    <td>&euro;{{netMonthlyIncome().toFixed(2).commas()}}</td>
+    <td>&euro;{{netAnnualIncome().toFixed(2).commas()}}</td>
   </tr>
 </table>
 <app-tax [annualIncome]="annualIncome" [totalDeductions]="totalDeductions()" (tax)="getTax($event)"></app-tax>
